@@ -42,7 +42,7 @@ def test_api_planet(client):
     response = client.get("/api/planet")
     assert response.status_code == 200
     data = response.get_json()
-    assert data["name"] == "saturn"
+    assert data["name"] == "Saturn"
     assert data["type"] == "Gas Giant"
     assert data["moons"] == 82
     assert "description" in data
