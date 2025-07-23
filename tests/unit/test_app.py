@@ -20,3 +20,11 @@ def test_home_content(client):
     response = client.get("/")
     # Make sure some part of the ASCII art or planet text is present in response
     assert b"+++++++" in response.data or b"planet" in response.data.lower()
+
+def test_about_status_code(client):
+    response = client.get("/about")
+    assert response.status_code == 200
+
+def test_about_content(client):
+    response = client.get("/about")
+    assert b"Planet App" in response.data

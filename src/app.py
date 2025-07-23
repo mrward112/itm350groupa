@@ -156,5 +156,9 @@ HTML_TEMPLATE = """
 def home():
     return render_template_string(HTML_TEMPLATE, frames=FRAMES)
 
+@app.route("/about")
+def about():
+    return "This is the Planet App. Created for ITM350 Group A."
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
