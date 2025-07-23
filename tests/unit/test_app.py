@@ -28,3 +28,12 @@ def test_about_status_code(client):
 def test_about_content(client):
     response = client.get("/about")
     assert b"Planet App" in response.data
+
+def test_api_planet(client):
+    response = client.get("/api/planet")
+    assert response.status_code == 200
+    data = response.get_json()
+    assert data["name"] == "Earth"
+    assert data["type"] == "Terrestrial"
+    assert data["moons"] == 1
+    assert "description" in data

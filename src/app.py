@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string
+from flask import Flask, render_template_string, jsonify
 
 app = Flask(__name__)
 
@@ -158,7 +158,17 @@ def home():
 
 @app.route("/about")
 def about():
-    return "This is the Planet App. Created for ITM350 Group A."
+    return "This is the Planet App. Created by ITM350 Group A for avid space enthusiasts."
+
+@app.route("/api/planet")
+def api_planet():
+    planet_info = {
+        "name": "Saturn",
+        "type": "Gas Giant",
+        "moons": 82,
+        "description": "The second-largest planet in our solar system. It is largely known for its stunning rings of ice and rock."
+    }
+    return jsonify(planet_info)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=80)
